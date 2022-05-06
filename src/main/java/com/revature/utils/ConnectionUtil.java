@@ -13,7 +13,7 @@ public class ConnectionUtil {
 		e.printStackTrace();
 		System.out.println("Driver not located.");
 	}
-		String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=public" ;
+		String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=\"public\"" ;
 		String usernames = "postgres";
 		String passwords = "WTCANTFW";
 

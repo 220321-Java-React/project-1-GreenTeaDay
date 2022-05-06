@@ -30,7 +30,7 @@ public class ErsUserDAO {
                 String lastName = rs.getString("user_last_name");
                // int managerId = rs.getInt("ManagerID");
                 String emailAddress = rs.getString("user_email");
-                String password = rs.getString("Password");
+                String password = rs.getString("ers_password");
              //   String employeeType = rs.getString("EmployeeType");
                 int ers_user_roles_fk = rs.getInt("ers_user_roles_fk");
                 int ers_reimbursment_fk = rs.getInt("ers_reimbursment_fk");
