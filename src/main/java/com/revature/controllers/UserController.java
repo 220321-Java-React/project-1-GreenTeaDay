@@ -26,13 +26,13 @@ public class UserController {
 		if(AuthController.ses != null) { //if there is an active session from the AuthController...
 			
 		//we need an ArrayList of Employee objects (which we'll get from the service layer)
-		List<ErsUser> users = es.getUsers();
+		List<ErsUser> ers_users = es.getUsers();
 		
 		//create a GSON object to convert our Java object into JSON (since we can only transfer JSON, not Java)
 		Gson gson = new Gson();
 		
 		//use the JSON .toJson() method to turn our Java into JSON
-		String JSONUsers = gson.toJson(users);
+		String JSONUsers = gson.toJson(ers_users);
 		
 		//Give a HTTP response containing our JSON string back to the webpage (or wherever the HTTP request came from)
 		ctx.result(JSONUsers); //.result() sends a response of data back
@@ -40,6 +40,7 @@ public class UserController {
 		
 		} else { //if a session DOESN'T exist (user isn't logged in)
 			ctx.status(400);
+			
 		}
 		
 	};

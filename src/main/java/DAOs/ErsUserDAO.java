@@ -37,7 +37,8 @@ public class ErsUserDAO {
 
 
                 ErsUsers.add(new ErsUser(id, firstName,
-                		lastName, emailAddress, password,password,ers_user_roles_fk, ers_reimbursment_fk));
+                		lastName, emailAddress, password,
+                		password,ers_user_roles_fk, ers_reimbursment_fk));
                 }
             
         } catch (SQLException e) {
