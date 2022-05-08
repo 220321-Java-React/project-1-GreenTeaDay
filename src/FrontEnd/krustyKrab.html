@@ -1,12 +1,11 @@
-package FrontEnd;
-
+<!-- You can write ! and hit enter, and it will make your HTML skeleton for you-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krusty Krab</title>
+    <title>ERS</title>
     
     <!-- Here, I've pasted in some bootstrap for the sake of STYLE-->
     <link
@@ -26,12 +25,12 @@ package FrontEnd;
     <!-- Everything within this div will get styled with the appropriate bootstrap styling-->
     <div class="container">
 
-        <h3>Welcome to the Krusty Krab!</h3>
+        <h3>Welcome to your ERS.</h3>
 
         <div id="loginRow" class="row">
-            <h3 id="welcomeHead">Please Enter Your Login Credentials</h3>
-            <input id="username" placeholder="Username"/>
-            <input id="password" type="password" placeholder="Password"/>
+            <h3 id="welcomeHead">Please Login</h3>
+            <input id="ersUsername" placeholder="ersUsername"/>
+            <input id="ersPassword" type="password" placeholder="Password"/>
             <button id="loginButton" class="btn btn-primary col-sm-3">Login</button>
         <!-- col-sm-3? this will make the login button take up 25% of the row -->
         <!-- col-sm-12 for instance would make the button take up the entire row -->
@@ -45,7 +44,7 @@ package FrontEnd;
         <!-- I want a table of employee information which we'll SELECT from the DB -->
 
         <div id="table-row" class="row">
-            <table id="krustyTable" class="table table-dark table-bordered table-hover table-striped">
+            <table id="ersTable`````````````````````````````" class="table table-dark table-bordered table-hover table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -55,18 +54,18 @@ package FrontEnd;
                     </tr>
                 </thead>
 
-                <tbody id="employeeBody">
+                <tbody id="userBody">
                     <!-- We'll leave the table body blank - it will be filled with data by our JS-->
                 </tbody>
 
             </table>
         </div>
 
-        <button id="getEmployeeButton" class="btn btn-danger">Show Employees</button>
+        <button id="getErsUserButton" class="btn btn-danger">Show Users</button>
 
     </div>
 
     <!-- We need to link a JS file to this HTML file to give it functionality -->
-    <script src="krustyKrab.js"></script>
+    <script src="ERS.js"></script>
 </body>
 </html>

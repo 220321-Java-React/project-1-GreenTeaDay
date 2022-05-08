@@ -6,11 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.revature.models.ErsUser;
 import com.revature.utils.ConnectionUtil;
 
 public class UserLoginDAO {
 
-	public boolean login(String username, String password) {
+	public ErsUser login(String username, String password) {
 		
 			String User = null;
 			String Pass = null;
@@ -30,10 +31,10 @@ public class UserLoginDAO {
 			rs.next();
 			
 			if(username.equals(User) && password.equals(Pass)) {
-			return true;
+			// return true;
 		} else {
 			System.out.print("User not found");
-			return false;
+		//	return false;
 			 }
 		}  catch (SQLException e) {
 			// System.out.println("User not found.");
@@ -41,7 +42,8 @@ public class UserLoginDAO {
 		
 	}
 		System.out.println("User not found");
-		return false;
+		// return false;
+		return null;
 		
 	}
 };

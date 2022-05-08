@@ -23,10 +23,10 @@ public class UserController {
 	public Handler getEmployeesHandler = (ctx) -> {
 
 		
-	//	if(AuthController.ses != null) { //if there is an active session from the AuthController...
+	// if(AuthController.ses != null) { //if there is an active session from the AuthController...
 			
 		//we need an ArrayList of Employee objects (which we'll get from the service layer)
-		List<ErsUser> ers_users = es.getUsers();
+		List<ErsUser> ers_users = es.getAllUsers();
 		
 		//create a GSON object to convert our Java object into JSON (since we can only transfer JSON, not Java)
 		Gson gson = new Gson();
@@ -41,7 +41,7 @@ public class UserController {
 	//	} else { //if a session DOESN'T exist (user isn't logged in)
 	//		ctx.status(400);
 			
-	//	}
+	//		}
 		
 	};
 	

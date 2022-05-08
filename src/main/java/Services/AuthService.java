@@ -18,9 +18,9 @@ public class AuthService {
 		if(username.equals("user") && password.equals("password")) {
 			
 			//empty Role object (no args constructor) just for simplicity here
-			ErsUserRoles role = new ErsUserRoles();
+			ErsUserRoles ErsUserRoles = new ErsUserRoles();
 			
-			return new ErsUser("Sandy", "Cheeks", role);
+			return new ErsUser("User", "Pass", ErsUserRoles);
 		} else {
 			return null;
 		}
