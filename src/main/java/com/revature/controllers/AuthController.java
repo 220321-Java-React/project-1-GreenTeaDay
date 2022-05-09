@@ -1,5 +1,3 @@
-
-   
 package com.revature.controllers;
 
 import javax.servlet.http.HttpSession;

@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -23,26 +24,30 @@ public class UserController {
 	public Handler getEmployeesHandler = (ctx) -> {
 
 		
-	// if(AuthController.ses != null) { //if there is an active session from the AuthController...
-			
+	 if(AuthController.ses != null) { //if there is an active session from the AuthController...
+	//	if(ctx.req.getSession(true) != null) {
 		//we need an ArrayList of Employee objects (which we'll get from the service layer)
-		List<ErsUser> ers_users = es.getAllUsers();
+		ArrayList<ErsUser> ErsUsers = es.getEmployees();
 		
 		//create a GSON object to convert our Java object into JSON (since we can only transfer JSON, not Java)
 		Gson gson = new Gson();
 		
 		//use the JSON .toJson() method to turn our Java into JSON
-		String JSONUsers = gson.toJson(ers_users);
+		String JSONUsers = gson.toJson(ErsUsers);
 		
 		//Give a HTTP response containing our JSON string back to the webpage (or wherever the HTTP request came from)
 		ctx.result(JSONUsers); //.result() sends a response of data back
 		ctx.status(200); //.status() sets the HTTP status code. 200 stands for "OK"
 		
-	//	} else { //if a session DOESN'T exist (user isn't logged in)
-	//		ctx.status(400);
+	//	
+		} else { //if a session DOESN'T exist (user isn't logged in)
+	//		
+			ctx.status(400);
 			
-	//		}
+	//		
+			}
 		
 	};
 	
 }
+

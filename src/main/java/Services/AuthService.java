@@ -1,6 +1,5 @@
 package Services;
 import com.revature.models.ErsUser;
-import com.revature.models.ErsUserRoles;
 
 //remember, I'm semi-hardcoding here. You'll need to get this employee data from the DAO & DB
 public class AuthService {
@@ -12,15 +11,14 @@ public class AuthService {
 		
 		//we would call the DAO method here, and use its results in the if/else below
 		//the DAO method would return whatever gets found in the DB (records with matching username/pass)
-		username = "user";
+		username = "username";
 		password = "password";
 		//this is hardcoding - telling Java exactly what we want the username/password to be
-		if(username.equals("user") && password.equals("password")) {
+		if(username.equals("username") && password.equals("password")) {
 			
-			//empty Role object (no args constructor) just for simplicity here
-			ErsUserRoles ErsUserRoles = new ErsUserRoles();
+			new ErsUser(0, "Dummy", "pass", "Test", "Tset", "test@test.co", 1, 3);
 			
-			return new ErsUser("User", "Pass", ErsUserRoles);
+			return new ErsUser(username, password);
 		} else {
 			return null;
 		}

@@ -1,5 +1,6 @@
 package Services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.ErsUser;
@@ -15,14 +16,14 @@ public class ErsUserService {
 	
 	//this method gets all employees from the DAO (we will call this method from the Handler in the controller layer).
 	//this method will be pretty simple, since we don't really need to process any data - just send it around
-	public List<ErsUser> getAllUsers(){
+	public ArrayList<ErsUser> getEmployees(){
 		
 		//get the List of employees from the DAO
-		List<ErsUser> users = eDAO.getAllUsers();
-		
+		ArrayList<ErsUser> ErsUsers = eDAO.getEmployees();
+
 		//return that List of employees
-		return users;
+		return ErsUsers;
 		
 	}
 	
-}
+}; 

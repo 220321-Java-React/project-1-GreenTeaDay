@@ -45,27 +45,32 @@ async function getAllUsers() {
             row.appendChild(cell);
 
             //we do this^^^^ for every column in employees
-
+            let row1 = document.createElement("tr");
             let cell2 = document.createElement("td");
             cell2.innerHTML = ers_user.ersUsername;
             row.appendChild(cell2);
 
+            let row2 = document.createElement("tr");
             let cell3 = document.createElement("td");
             cell3.innerHTML = ers_user.ersPassword;
             row.appendChild(cell3);
-
+            
+            let row4 = document.createElement("tr");
             let cell4 = document.createElement("td");
             cell4.innerHTML = ers_user.userFirstName;
             row.appendChild(cell4);
-
+            
+            let row5 = document.createElement("tr");
             let cell5 = document.createElement("td");
             cell4.innerHTML = ers_user.userLastName;
             row.appendChild(cell5);
 
+            let row6 = document.createElement("tr");
             let cell6 = document.createElement("td");
             cell4.innerHTML = ers_user.Password1;
             row.appendChild(cell6);
 
+            let row7 = document.createElement("tr");
             let cell7 = document.createElement("td");
             cell4.innerHTML = ers_user.ersUserRolesFk;
             row.appendChild(cell7);
@@ -93,11 +98,11 @@ async function loginFunction(){
 
 //gather the user inputs from the login inputs
 //when the login button is clicked, the value from username and password will be put into variables
-let usern = document.getElementById("username").value;
-let userp = document.getElementById("password").value;
+let usern = document.getElementById("ersUsername").value;
+let userp = document.getElementById("ersPassword").value;
 
 //we want to send the user/pass as JSON, so we need a JS object first.
-let ers_user = {
+let user = {
     username:usern,
     password:userp
 }
@@ -112,7 +117,7 @@ console.log(ers_user);
 let response = await fetch(url+"/login", {
 
     method: "POST", //send a POST request (would be a GET if we didn't specify...)
-    body: JSON.stringify(ers_user), //turning our user object into JSON to send to the server
+    body: JSON.stringify(user), //turning our user object into JSON to send to the server
     credentials: "include"
     //this last line will ensure that the cookie is captured (so that we can have a session)
     //future fetches after login will require this "include" value 

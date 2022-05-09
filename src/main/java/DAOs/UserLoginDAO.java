@@ -18,7 +18,7 @@ public class UserLoginDAO {
 		
 		try (Connection conn = ConnectionUtil.getConnection()) {
 
-			String sql = "select * from users where usernames = ? and passwords = ?";
+			String sql = "select * from ers_users where ers_username = ? and ers_password = ?";
 			
 			PreparedStatement ps = conn.prepareStatement(sql); 
 		
@@ -31,7 +31,7 @@ public class UserLoginDAO {
 			rs.next();
 			
 			if(username.equals(User) && password.equals(Pass)) {
-			// return true;
+			// return true; not a boolean it's an object
 		} else {
 			System.out.print("User not found");
 		//	return false;

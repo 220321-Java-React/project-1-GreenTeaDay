@@ -7,38 +7,65 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 import com.revature.utils.ConnectionUtil;
 
-public class ErsUserDAO {
-    public List<ErsUser> getAllUsers() {
-        List<ErsUser> ErsUsers = new LinkedList<>();
+public class ErsUserDAO implements EmployeeDAOInterface {
+    @Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+
+	public ArrayList<ErsUser> getEmployees() {
+       
+    	ArrayList<ErsUser> ErsUsers = new ArrayList<ErsUser>();
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String sql = "select * from ers_users";
+            String sql = "SELECT * FROM ers_users";
             
-            ps = connection.prepareStatement(sql);
-            rs = ps.executeQuery();
+			Statement s = connection.createStatement();
+			rs = s.executeQuery(sql);
 
             while(rs.next()) {
-                int id = rs.getInt("ers_userid");
-                String firstName = rs.getString("user_first_name");
-                String lastName = rs.getString("user_last_name");
+               // int id = rs.getInt("ers_userid");
+                String firstName = rs.getString("ers_username");
+                String ers_username = rs.getString("ers_password");
                // int managerId = rs.getInt("ManagerID");
-                String emailAddress = rs.getString("user_email");
-                String password = rs.getString("ers_password");
-             //   String employeeType = rs.getString("EmployeeType");
+                String ers_password = rs.getString("user_first_name");
+             //   String employeeType = rs.getString("EmployeeType");            
+                String user_last_name = rs.getString("user_last_name");
+                String user_email = rs.getString("user_email");
                 int ers_user_roles_fk = rs.getInt("ers_user_roles_fk");
-                int ers_reimbursment_fk = rs.getInt("ers_reimbursment_fk");
+                int ers_reimbursment_fk = rs.getInt("ers_reimbursmentid_fk");
 
 
-                ErsUsers.add(new ErsUser(id, firstName,
-                		lastName, emailAddress, password,
-                		password,ers_user_roles_fk, ers_reimbursment_fk));
+                ErsUsers.add(new ErsUser(firstName, ers_username,
+                		ers_password, user_last_name,
+                		user_email, ers_user_roles_fk,ers_reimbursment_fk));
                 }
             
         } catch (SQLException e) {
@@ -59,11 +86,16 @@ public class ErsUserDAO {
                 }
             }
         }
-
         return ErsUsers;
     }
 
-    public ErsUser getUserById(int ers_userid) {
+    @Override
+	public String toString() {
+		return "ErsUserDAO [getEmployees()=" + getEmployees() + ", getAllUsers()=" + getAllUsers() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+	public ErsUser getUserById(int ers_userid) {
     	ErsUser ersUser = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -85,7 +117,7 @@ public class ErsUserDAO {
                 int ers_user_roles_fk = rs.getInt("ers_user_roles_fk");
                 int ers_reimbursment_fk = rs.getInt("ers_reimbursment_fk");
 
-                ersUser = new ErsUser(id, firstName, lastName, emailAddress, ers_user_roles_fk, ers_reimbursment_fk);
+                ersUser = new ErsUser(id, firstName, lastName, emailAddress, emailAddress, emailAddress, ers_user_roles_fk, ers_reimbursment_fk);
             }
 
         } catch(SQLException e) {
@@ -195,5 +227,29 @@ public class ErsUserDAO {
 	public ArrayList<ErsUser> getEmployeesByRole(String roleInput) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<ErsUser> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ErsUser getEmployeeById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertErsUser(ErsUser employee, int role_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeErsUser(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 }

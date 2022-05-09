@@ -3,7 +3,7 @@ const url = "http://localhost:3000"; //putting our base URL in a variable for cl
 
 //add an event listener to give our buttons functionality (using DOM selection)
 //"When the getEmployeeButton gets clicked, execute the getEmployees function"
-document.getElementById("getErsUserButton").addEventListener("click", getAllUsers());
+document.getElementById("getErsUserButton").addEventListener("click", getEmployees());
 
 //"When the loginButton gets clicked, execute the loginFunction"
 document.getElementById("loginButton").addEventListener("click", loginFunction());
@@ -11,7 +11,7 @@ document.getElementById("loginButton").addEventListener("click", loginFunction()
 
 //getEmployees is an async function which has a fetch request to get employees from our server
 //remember, async makes a function return a Promise (which fetch requests return)
-async function getAllUsers() {
+async function getEmployees() {
 
     //we will send a fetch request to get out employee data
     //by default, fetch requests send GET requests (see how to send others like POST below)
@@ -45,31 +45,35 @@ async function getAllUsers() {
             row.appendChild(cell);
 
             //we do this^^^^ for every column in employees
-
+           // let row1 = document.createElement("tr");
             let cell2 = document.createElement("td");
             cell2.innerHTML = ers_user.ersUsername;
             row.appendChild(cell2);
 
+           // let row2 = document.createElement("tr");
             let cell3 = document.createElement("td");
             cell3.innerHTML = ers_user.ersPassword;
             row.appendChild(cell3);
-
+            
+           // let row4 = document.createElement("tr");
             let cell4 = document.createElement("td");
             cell4.innerHTML = ers_user.userFirstName;
             row.appendChild(cell4);
-
+            
+          //  let row5 = document.createElement("tr");
             let cell5 = document.createElement("td");
-            cell4.innerHTML = ers_user.userLastName;
+            cell5.innerHTML = ers_user.userLastName;
             row.appendChild(cell5);
 
+          //  let row6 = document.createElement("tr");
             let cell6 = document.createElement("td");
-            cell4.innerHTML = ers_user.Password1;
+            cell6.innerHTML = ers_user.ersUserRolesFk; //Password1
             row.appendChild(cell6);
 
+         //   let row7 = document.createElement("tr");
             let cell7 = document.createElement("td");
-            cell4.innerHTML = ers_user.ersUserRolesFk;
+            cell7.innerHTML = ers_user.ersReimbursmentFk; // ersUserRolesFk
             row.appendChild(cell7);
-
 
 
             //append the tr (which we called "row") to the table body (tbody)
@@ -93,18 +97,18 @@ async function loginFunction(){
 
 //gather the user inputs from the login inputs
 //when the login button is clicked, the value from username and password will be put into variables
-let usern = document.getElementById("username").value;
-let userp = document.getElementById("password").value;
+let usern = document.getElementById("ersUsername").value;
+let userp = document.getElementById("ersPassword").value;
 
 //we want to send the user/pass as JSON, so we need a JS object first.
-let ers_user = {
+let user = {
     username:usern,
     password:userp
 }
 //This object should reflect the LoginDTO in our Java... This is the data we want to transfer
 
 //for debugging purposes, print out the user object to the console
-console.log(ers_user);
+console.log(user);
 
 //fetch request to the server
 //rememeber, the second parameter in a fetch is for configuring our fetch request
@@ -112,7 +116,7 @@ console.log(ers_user);
 let response = await fetch(url+"/login", {
 
     method: "POST", //send a POST request (would be a GET if we didn't specify...)
-    body: JSON.stringify(ers_user), //turning our user object into JSON to send to the server
+    body: JSON.stringify(user), //turning our user object into JSON to send to the server
     credentials: "include"
     //this last line will ensure that the cookie is captured (so that we can have a session)
     //future fetches after login will require this "include" value 
@@ -126,7 +130,7 @@ console.log(data)
 //control flow based on successful/unsuccessful login
 if(response.status === 202){
     //wipe our login row and welcome the user
-    document.getElementById("loginRow").innerText="Welcome" + data.userFirstName; // userFirstName user_first_name
+    document.getElementById("loginRow").innerText="Welcome" + data.user_first_name; // userFirstName user_first_name
 } else {
     document.getElementById("loginRow").innerText="Login failed! Refresh the page"
 }

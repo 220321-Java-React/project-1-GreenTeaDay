@@ -18,6 +18,8 @@ public interface EmployeeDAOInterface {
 	//Interface methods are public, abstract by default
 	
 	//This method will return every employee from the database
+	
+	ArrayList<ErsUser> getAllUsers();
 	ArrayList<ErsUser> getEmployees();
 	
 	//This method will return an employee which we'll get by their id
