@@ -134,7 +134,7 @@ console.log(data)
 //control flow based on successful/unsuccessful login
 if(response.status === 202){
     //wipe our login row and welcome the user
-    document.getElementById("loginRow").innerText="Welcome" + data.ers_user.user_first_name; // userFirstName user_first_name
+    document.getElementById("loginRow").innerText="Welcome"; //+ data.ers_user.user_first_name; // userFirstName user_first_name
 } else {
     document.getElementById("loginRow").innerText="Login failed! Refresh the page"
 }

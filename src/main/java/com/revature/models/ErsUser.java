@@ -38,8 +38,12 @@ public class ErsUser {
 		this.ers_user_roles_fk = ers_user_roles_fk;
 		this.ers_reimbursmentid_fk = ers_reimbursmentid_fk;
 	}
-	public ErsUser(String username, String password) {
-		// TODO Auto-generated constructor stub
+	
+
+	public ErsUser(String ers_username, String ers_password) {
+		super();
+		this.ers_username = ers_username;
+		this.ers_password = ers_password;
 	}
 
 	public int getErsUserid() {
