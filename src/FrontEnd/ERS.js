@@ -47,33 +47,37 @@ async function getEmployees() {
             //we do this^^^^ for every column in employees
            // let row1 = document.createElement("tr");
             let cell2 = document.createElement("td");
-            cell2.innerHTML = ers_user.ersUsername;
+            cell2.innerHTML = ers_user.ers_username;
             row.appendChild(cell2);
 
            // let row2 = document.createElement("tr");
             let cell3 = document.createElement("td");
-            cell3.innerHTML = ers_user.ersPassword;
+            cell3.innerHTML = ers_user.ers_password;
             row.appendChild(cell3);
             
            // let row4 = document.createElement("tr");
             let cell4 = document.createElement("td");
-            cell4.innerHTML = ers_user.userFirstName;
+            cell4.innerHTML = ers_user.user_first_name;
             row.appendChild(cell4);
             
           //  let row5 = document.createElement("tr");
             let cell5 = document.createElement("td");
-            cell5.innerHTML = ers_user.userLastName;
+            cell5.innerHTML = ers_user.user_last_name;
             row.appendChild(cell5);
 
           //  let row6 = document.createElement("tr");
             let cell6 = document.createElement("td");
-            cell6.innerHTML = ers_user.ersUserRolesFk; //Password1
+            cell6.innerHTML = ers_user.user_email; //Password1
             row.appendChild(cell6);
 
          //   let row7 = document.createElement("tr");
             let cell7 = document.createElement("td");
-            cell7.innerHTML = ers_user.ersReimbursmentFk; // ersUserRolesFk
+            cell7.innerHTML = ers_user.ers_user_roles_fk; // ersUserRolesFk
             row.appendChild(cell7);
+
+            let cell8 = document.createElement("td");
+            cell7.innerHTML = ers_user.ers_reimbursmentid_fk; // ersUserRolesFk
+            row.appendChild(cell8);
 
 
             //append the tr (which we called "row") to the table body (tbody)
@@ -97,8 +101,8 @@ async function loginFunction(){
 
 //gather the user inputs from the login inputs
 //when the login button is clicked, the value from username and password will be put into variables
-let usern = document.getElementById("ersUsername").value;
-let userp = document.getElementById("ersPassword").value;
+let usern = document.getElementById("ers_username").value;
+let userp = document.getElementById("ers_password").value;
 
 //we want to send the user/pass as JSON, so we need a JS object first.
 let user = {
@@ -130,7 +134,7 @@ console.log(data)
 //control flow based on successful/unsuccessful login
 if(response.status === 202){
     //wipe our login row and welcome the user
-    document.getElementById("loginRow").innerText="Welcome" + data.user_first_name; // userFirstName user_first_name
+    document.getElementById("loginRow").innerText="Welcome" + data.ers_user.user_first_name; // userFirstName user_first_name
 } else {
     document.getElementById("loginRow").innerText="Login failed! Refresh the page"
 }
